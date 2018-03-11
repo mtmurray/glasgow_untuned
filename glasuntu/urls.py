@@ -7,4 +7,8 @@ from . import views
 urlpatterns = [
 	#Home - url function takes 3 arguments: regular expression (r'^$'), function to be called (views.index), url pattern name (index)
 	url(r'^$', views.index, name='index'),
+	
+	#Band page url
+	
+	#Venue page url
 ]

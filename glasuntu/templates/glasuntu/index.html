@@ -1,73 +1,59 @@
-<!DOCTYPE html>
-<html>
+{% extends "glasuntu/base.html" %}
+
 <head>
 	<title>Glasgow Untuned Homepage</title>
 	<meta name = "authors" content = "Matthew Murray, Jamie Howitt, Jamie Dickson">
 	<meta name - "page description" content = "This is the homepage of Glasgow Untuned, a site for discovering music venues and upcoming performances">
-	<link rel = "stylesheet" href = "index_style.css">
 </head>
 
+{% block head %}
+	<input id = "uEnt" type = "text" placeholder = "Username">
+	<input id = "pEnt" type "text" placeholder = "Password">
+{% endblock head %}
+
+{% block content %}
+<!--Probably need to use "for" loop to add in relevant events, etc.-->
 <body>
-<div id = "head">
-	<header>
-		<h1 id = "main">Glasgow Untuned</h1>
-		<input id = "search" type = "text" placeholder = "Search...">
-		<input id = "uEnt" type = "text" placeholder = "Username">
-		<input id = "pEnt" type "text" placeholder = "Password">
-	</header>
-</div>
+	<div class = "navBar" id = "upcoming">
+		<h2>Upcoming Events</h2>
+			<nav id = "EventsNav">
+				<ul>
+					<li>Dates and events and stuff</li>
+					<li>Dates and events and stuff</li>
+					<li>Dates and events and stuff</li>
+					<li>Dates and events and stuff</li>
+					<li>Dates and events and stuff</li>
+				</ul>
+			</nav>
+	</div>
 
-<div class = "navBar" id = "upcoming">
-	<h2>Upcoming Events</h2>
-		<nav id = "EventsNav">
-			<ul>
-				<li>Dates and events and stuff</li>
-				<li>Dates and events and stuff</li>
-				<li>Dates and events and stuff</li>
-				<li>Dates and events and stuff</li>
-				<li>Dates and events and stuff</li>
-			</ul>
-		</nav>
-</div>
+	<div class = "navBar" id = "recent">
+		<h2>Recently Added</h2>
+			<nav id = "RecentNav">
+				<ul>
+					<li>Link to thing</li>
+					<li>Link to thing</li>
+					<li>Link to thing</li>
+					<li>Link to thing</li>
+					<li>Link to thing</li>
+				</ul>
+			</nav>
+	</div>
 
-<div class = "navBar" id = "recent">
-	<h2>Recently Added</h2>
-		<nav id = "RecentNav">
-			<ul>
-				<li>Link to thing</li>
-				<li>Link to thing</li>
-				<li>Link to thing</li>
-				<li>Link to thing</li>
-				<li>Link to thing</li>
-			</ul>
-		</nav>
-</div>
-
-<div class = "navBar" id = "genres">
-	<h2>Venue Genres</h2>
-		<nav id = "GenreNav">
-			<ul>
-				<li>Rock</li>
-				<li>Pop</li>
-				<li>Scottish Folk</li>
-				<li>Dance</li>
-				<li>EDM</li>
-				<li>Metal</li>
-			</ul>
-		</nav>
-</div>
-
-
-	<footer>
-		<div id = "foot">
-	
-			<p id = "social">Facebook and Twitter links<p>
-			<p id = "contact">Contact info<p>
-			<p id = "faq">FAQ</p>
-	
-		</div>
-	</footer>
-
+	<div class = "navBar" id = "genres">
+		<h2>Venue Genres</h2>
+			<nav id = "GenreNav">
+				<ul>
+					<li>Rock</li>
+					<li>Pop</li>
+					<li>Scottish Folk</li>
+					<li>Dance</li>
+					<li>EDM</li>
+					<li>Metal</li>
+				</ul>
+			</nav>
+	</div>
 </body>
-</html>
+
+{% endblock content %}
 

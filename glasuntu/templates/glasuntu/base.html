@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<header>
+		<h1><a href="{% url 'glasuntu:index' %}">Glasgow Untuned</a></h1>
+		
+		<input id = "search" type = "text" placeholder = "Search...">
+		
+		{% block head %}{% endblock head %}
+	</header>
+		
+	<!--content of the block is determined in the inheriting template-->
+	{% block content %}{% endblock content %}
+		
+		
+	<footer>
+		<div id = "foot">
+	
+			<p id = "social">Facebook and Twitter links<p>
+			<p id = "contact">Contact info<p>
+			<p id = "faq">FAQ</p>
+	
+		</div>
+	</footer>
+	
+</body>
+
+
+
+
+
+
+</html>
