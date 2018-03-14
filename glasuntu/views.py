@@ -18,8 +18,6 @@ def index(request):
 
 	
 def search(request):
-	#queries = VenuePage.objects.active()
-
 	query = request.GET.get("q")
 	
 	queries = VenuePage.objects.filter(

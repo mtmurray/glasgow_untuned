@@ -14,5 +14,5 @@ urlpatterns = [
 	#Band page url
 	
 	#Venue page url
-	url(r'^venues/(?P<venue_id>\d+)/$', views.venue, name="venue"),
+	url(r'^venue/(?P<venue_id>\d+)/$', views.venue, name="venue"),
 ]

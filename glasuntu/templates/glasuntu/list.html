@@ -9,9 +9,10 @@
 
 <body>
 	<h2>Search Results</h2>
-
-	{% for query in queries %}
-		<p>{{ query }}</p><br />
-	{% endfor %}
+	<ul>
+		{% for query in queries %}
+			<li><a href = "{% url 'glasuntu:venue' venue_id=query.id%}">{{ query }}</a></li>
+		{% endfor %}
+	</ul>
 
 {% endblock content %}
