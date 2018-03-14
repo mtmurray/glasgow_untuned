@@ -5,7 +5,10 @@
 	<header>
 		<h1><a href="{% url 'glasuntu:index' %}">Glasgow Untuned</a></h1>
 		
-		<input id = "search" type = "text" placeholder = "Search...">
+		<form method = "GET" action = "{% url 'glasuntu:search' %}">
+			<input id = "search" name = "q" type = "text" placeholder = "Search..." value = "{{ request.GET.q }}"/>
+			<input id = "searchButt" type = "submit" value = "Submit"/>
+		</form>
 		
 		{% block head %}{% endblock head %}
 	</header>

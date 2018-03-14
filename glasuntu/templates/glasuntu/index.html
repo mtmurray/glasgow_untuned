@@ -18,11 +18,11 @@
 		<h2>Upcoming Events</h2>
 			<nav id = "EventsNav">
 				<ul>
-					<li>Dates and events and stuff</li>
-					<li>Dates and events and stuff</li>
-					<li>Dates and events and stuff</li>
-					<li>Dates and events and stuff</li>
-					<li>Dates and events and stuff</li>
+					{% for event in events %}
+						<li>{{ event }}</li>
+					[% empty %}
+						<li>No events are scheduled yet.</li>
+					{% endfor %}	
 				</ul>
 			</nav>
 	</div>
@@ -31,11 +31,11 @@
 		<h2>Recently Added</h2>
 			<nav id = "RecentNav">
 				<ul>
-					<li>Link to thing</li>
-					<li>Link to thing</li>
-					<li>Link to thing</li>
-					<li>Link to thing</li>
-					<li>Link to thing</li>
+					{% for recent in recents %}
+						<li>{{ recent }}</li>
+					{% empty %}
+						<li>There are no recently visited pages.</li>
+					{% endfor %}
 				</ul>
 			</nav>
 	</div>
@@ -44,12 +44,11 @@
 		<h2>Venue Genres</h2>
 			<nav id = "GenreNav">
 				<ul>
-					<li>Rock</li>
-					<li>Pop</li>
-					<li>Scottish Folk</li>
-					<li>Dance</li>
-					<li>EDM</li>
-					<li>Metal</li>
+					{% for genre in genres %}
+						<li>{{ genre }}</li>
+					{% empty %}
+						<li>No genres have been defined.</li>
+					{% endfor %}
 				</ul>
 			</nav>
 	</div>

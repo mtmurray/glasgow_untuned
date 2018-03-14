@@ -8,7 +8,11 @@ urlpatterns = [
 	#Home - url function takes 3 arguments: regular expression (r'^$'), function to be called (views.index), url pattern name (index)
 	url(r'^$', views.index, name='index'),
 	
+	#List - display search results
+	url(r'^list/$', views.search, name='search'),
+	
 	#Band page url
 	
 	#Venue page url
+	url(r'^venues/(?P<venue_id>\d+)/$', views.venue, name="venue"),
 ]

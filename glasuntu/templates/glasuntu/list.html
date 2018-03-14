@@ -1,0 +1,17 @@
+{% extends "glasuntu/base.html" %}
+
+{% block head %}
+	<input id = "uEnt" type = "text" placeholder = "Username">
+	<input id = "pEnt" type "text" placeholder = "Password">
+{% endblock head %}
+
+{% block content %}
+
+<body>
+	<h2>Search Results</h2>
+
+	{% for query in queries %}
+		<p>{{ query }}</p><br />
+	{% endfor %}
+
+{% endblock content %}
