@@ -1,0 +1,13 @@
+{% extends "glasuntu/base.html" %}
+
+{% block content %}
+
+	<p>Create your artist page:</p>
+	
+	<form action = "{% url 'glasuntu:new_artist' %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Create Page</button>
+	</form>
+
+{% endblock content %}

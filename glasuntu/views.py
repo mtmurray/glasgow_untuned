@@ -1,9 +1,13 @@
 from django.shortcuts import render #render function is responsible for rendering the info in the views
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.db.models import Q
 from .models import VenuePage
 from .models import Event
 from .models import Genre
 from .models import ArtistPage
+from .forms import ArtistPageForm
+from .forms import VenuePageForm
 
 def index(request):
 	"""Glasgow Untuned home page"""
@@ -62,3 +66,25 @@ def artist(request, artist_id):
 	}
 	
 	return render(request, 'glasuntu/band.html', context_dict)
+	
+def new_artist(request):
+	if request.method != 'POST':
+		form = ArtistPageForm()
+	else:
+		form = ArtistPageForm(data = request.POST)
+		if form.is_valid():
+			form.save()
+			
+	context_dict = {'form':form}
+	return render(request, 'glasuntu/new_artist.html', context_dict)
+	
+def new_venue(request):
+	if request.method != 'POST':
+		form = VenuePageForm()
+	else:
+		form = VenuePageForm(data = request.POST)
+		if form.is_valid():
+			form.save()
+			
+	context_dict = {'form':form}
+	return render(request, 'glasuntu/new_venue.html', context_dict)

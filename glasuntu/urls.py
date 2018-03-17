@@ -16,4 +16,10 @@ urlpatterns = [
 	
 	#Venue page url
 	url(r'^venue/(?P<venue_id>\d+)/$', views.venue, name="venue"),
+	
+	#Create artist page url
+	url(r'^new_artist/$', views.new_artist, name = 'new_artist'),
+	
+	#Register venue page url
+	url(r'^new_venue/$', views.new_venue, name = 'new_venue'),
 ]
