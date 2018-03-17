@@ -18,6 +18,7 @@
 		
 			<!--Content of the selection menu is retrieved in "search" view-->
 			<select id = "search_options" name = "s" value = "{{ request.GET.s }}"/>
+				<option selected = "true" disabled = "disabled">-Choose-</option>
 				<option value = "a">Artist</option>
 				<option value = "v">Venue</option>
 			</select>

@@ -11,11 +11,13 @@
 	<h2>Search Results</h2>
 	<ul>
 		{% for query in queries %}
-			{% if view is "venue" %}
+			{% if view == "venue" %}
 				<li><a href = "{% url 'glasuntu:venue' venue_id=query.id %}">{{ query }}</a></li>
 			{% else %}
 				<li><a href = "{% url 'glasuntu:artist' artist_id=query.id %}">{{ query }}</a></li>
 			{% endif %}
+		{% empty %}
+			<p>Please select a search category.</p>
 		{% endfor %}
 	</ul>
 
