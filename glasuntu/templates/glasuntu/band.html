@@ -1,0 +1,39 @@
+{% extends "glasuntu/base.html" %}
+
+<!--Will be if stuff for whether user is signed in (see the All-Knowing Matthew)-->
+
+<head>
+	<title>{{ artist }}</title>
+</head>
+
+{% block head %}
+	<input id = "uEnt" type = "text" placeholder = "Username">
+	<input id = "pEnt" type "text" placeholder = "Password">
+{% endblock head %}
+
+{% block content %}
+
+<body>
+	<h2> {{ artist }} </h2>
+	</br>
+	<button type="button">Follow</button>
+	<button type="button">Website</button>
+
+	<div id = "upcomingGigs">
+		<h2>Upcoming Gigs</h2>
+			<nav id = "GigsNav">
+				<ul>
+					{% for gig in gigs %}
+						<!-- (if gig band == this band -->
+						<li>{{ gig }}</li>
+					{% empty %}
+						<li>This band has no gigs scheduled.</li>
+					{% endfor %}
+				</ul>
+			</nav>
+	</div>
+	
+	
+</body>
+
+{% endblock content %}

@@ -3,16 +3,17 @@
 <head>
 	<title>Glasgow Untuned Homepage</title>
 	<meta name = "authors" content = "Matthew Murray, Jamie Howitt, Jamie Dickson">
-	<meta name - "page description" content = "This is the homepage of Glasgow Untuned, a site for discovering music venues and upcoming performances">
+	<meta name = "page description" content = "This is the homepage of Glasgow Untuned, a site for discovering music venues and upcoming performances">
 </head>
 
 {% block head %}
+<form method = "POST" action = "">
 	<input id = "uEnt" type = "text" placeholder = "Username">
 	<input id = "pEnt" type "text" placeholder = "Password">
+</form>
 {% endblock head %}
 
 {% block content %}
-<!--Probably need to use "for" loop to add in relevant events, etc.-->
 <body>
 	<div class = "navBar" id = "upcoming">
 		<h2>Upcoming Events</h2>

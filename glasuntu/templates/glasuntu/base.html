@@ -1,11 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'glasuntu/base_style.css' %}">
+</head>
 
 <body>
 	<header>
 		<h1><a href="{% url 'glasuntu:index' %}">Glasgow Untuned</a></h1>
 		
 		<form method = "GET" action = "{% url 'glasuntu:search' %}">
+		
+			<label for="search_options">Search by:</label>
+		
+			<!--Content of the selection menu is retrieved in "search" view-->
+			<select id = "search_options" name = "s" value = "{{ request.GET.s }}"/>
+				<option value = "a">Artist</option>
+				<option value = "v">Venue</option>
+			</select>
+			
+			<!-- "q" = the user's query -->
 			<input id = "search" name = "q" type = "text" placeholder = "Search..." value = "{{ request.GET.q }}"/>
 			<input id = "searchButt" type = "submit" value = "Submit"/>
 		</form>
@@ -28,10 +45,4 @@
 	</footer>
 	
 </body>
-
-
-
-
-
-
 </html>

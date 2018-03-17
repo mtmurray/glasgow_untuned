@@ -11,7 +11,8 @@ urlpatterns = [
 	#List - display search results
 	url(r'^list/$', views.search, name='search'),
 	
-	#Band page url
+	#Artist page url
+	url(r'^band/(?P<artist_id>\d+)/$', views.artist, name='artist'),
 	
 	#Venue page url
 	url(r'^venue/(?P<venue_id>\d+)/$', views.venue, name="venue"),

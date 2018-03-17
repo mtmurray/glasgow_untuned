@@ -11,7 +11,11 @@
 	<h2>Search Results</h2>
 	<ul>
 		{% for query in queries %}
-			<li><a href = "{% url 'glasuntu:venue' venue_id=query.id%}">{{ query }}</a></li>
+			{% if view is "venue" %}
+				<li><a href = "{% url 'glasuntu:venue' venue_id=query.id %}">{{ query }}</a></li>
+			{% else %}
+				<li><a href = "{% url 'glasuntu:artist' artist_id=query.id %}">{{ query }}</a></li>
+			{% endif %}
 		{% endfor %}
 	</ul>
 
