@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class VenuePage(models.Model):
@@ -24,3 +25,13 @@ class Event(models.Model):
 	date = models.DateTimeField(auto_now_add=True)
 	def __str__(self):
 		return self.name
+		
+class UserProfile(models.Model):
+	user = models.OneToOneField(User)
+	
+	website = models.URLField(blank=True)
+	social_media = models.URLField(blank=True)
+	image = models.ImageField(upload_to='profile_pics', blank=True)
+	
+	def __str__(self):
+		return self.user.username

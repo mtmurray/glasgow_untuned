@@ -1,7 +1,68 @@
 {% load static %}
+{% load bootstrap3 %}
 
 <!DOCTYPE html>
-<html>
+
+
+<html lang = "en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content = "IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+	
+	</head>
+	
+	<body>
+	<nav class = "navbar navbar-default navbar-static-top">
+		<button class = "navbar-toggle collapsed"
+			data-toggle="collapse" data-target="#navbar"
+			aria-controls="navbar" aria-expanded="false"
+			aria-label="toggle nav">
+			<span class = "navbar-toggler-icon"></span>
+		</button>
+		
+		<a href="{% url 'glasuntu:index' %}" class = "navbar-brand">Glasgow Untuned</a>
+		
+		<form method = "GET" action = "{% url 'glasuntu:search' %}" class = "navbar-form navbar-left">
+		
+			<label for="search_options">Search by:</label>
+		
+			<!--Content of the selection menu is retrieved in "search" view-->
+			<select id = "search_options" name = "s" value = "{{ request.GET.s }}"/>
+				<option value = "a">Artist</option>
+				<option value = "v">Venue</option>
+			</select>
+			
+			<!-- "q" = the user's query -->
+			<input id = "search" name = "q" type = "text" placeholder = "Search..." value = "{{ request.GET.q }}"/>
+			<input id = "searchButt" type = "submit" value = "Submit"/>
+		</form>
+		
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href = "{% url 'glasuntu:new_artist' %}">Create an Artist Page</a></li>
+			<li><a href = "{% url 'glasuntu:new_venue' %}">Register Your Venue</a></li>
+		</ul>
+	</nav>
+	
+	<!--content of the block is determined in the inheriting template-->
+	{% block content %}{% endblock content %}
+	
+	</body>
+	
+	<footer>
+		<div id = "foot">
+	
+			<p id = "social">Facebook and Twitter links<p>
+			<p id = "contact">Contact info<p>
+			<p id = "faq">FAQ</p>
+	
+		</div>
+	</footer>
+
+<!--
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +78,16 @@
 			<label for="search_options">Search by:</label>
 		
 			<!--Content of the selection menu is retrieved in "search" view-->
+			
+			<!--
 			<select id = "search_options" name = "s" value = "{{ request.GET.s }}"/>
-				<option selected = "true" disabled = "disabled">-Choose-</option>
 				<option value = "a">Artist</option>
 				<option value = "v">Venue</option>
 			</select>
 			
 			<!-- "q" = the user's query -->
+			
+			<!--
 			<input id = "search" name = "q" type = "text" placeholder = "Search..." value = "{{ request.GET.q }}"/>
 			<input id = "searchButt" type = "submit" value = "Submit"/>
 		</form>
@@ -34,10 +98,10 @@
 		{% block head %}{% endblock head %}
 	</header>
 		
-	<!--content of the block is determined in the inheriting template-->
-	{% block content %}{% endblock content %}
+	
+	
 		
-		
+	<!--
 	<footer>
 		<div id = "foot">
 	
@@ -49,4 +113,5 @@
 	</footer>
 	
 </body>
+		-->
 </html>

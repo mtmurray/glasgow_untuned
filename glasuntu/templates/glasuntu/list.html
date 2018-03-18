@@ -17,7 +17,7 @@
 				<li><a href = "{% url 'glasuntu:artist' artist_id=query.id %}">{{ query }}</a></li>
 			{% endif %}
 		{% empty %}
-			<p><em>Please select a search category.</em></p>
+			<p><em>No matches found.</em></p>
 		{% endfor %}
 	</ul>
 
