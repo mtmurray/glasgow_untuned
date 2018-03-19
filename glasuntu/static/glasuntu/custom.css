@@ -1,5 +1,6 @@
 .navbar-default {
 	background-color: SteelBlue !important;
+	position: fixed;
 }
 
 .navbar-brand {
@@ -25,7 +26,8 @@
 	color: white;
 }
 
+
 #navSearch{
-	position: fixed;
+	position: absolute;
 	left: 25%;
 }

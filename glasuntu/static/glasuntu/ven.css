@@ -1,0 +1,56 @@
+.column {
+    font-size: 150%;
+    float: left;
+    width: 18%;
+    margin-left: 15px
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.pic {
+    position: fixed;
+    float:left;
+    padding: 0;
+    margin: 0;
+}
+
+.left-element {
+    display: inline-block;
+    float: left;
+}
+
+.mid-element {
+    padding: 50px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 150%;
+    width:400px;
+    display: inline-block;
+    float: left;
+}
+.mid-top {
+  width:400px;
+}
+.mid-bottom {
+  padding-top: 75px;
+  width:400px;
+
+}
+.right-element {
+  padding: 60px;
+  display: inline-block;
+  float: left;
+}
+h1{
+font-weight: bold;
+ font-size: 50px;
+ text-align:left;
+}
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: purple;
+}

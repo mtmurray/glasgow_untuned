@@ -4,6 +4,56 @@
 	<title>{{ venue }}</title>
 </head>
 
+<body>
+<div id = "fb-root"></div>
+
 {% block content %}
-	<h2> {{ venue }} </h2>
+	<main role="main">
+		
+		<div>
+			<h2> {{ venue }} </h2>
+		</div>
+		
+	<div class="row">
+		<div class="column"><p><div class="fb-like" data-href="{{ request.build_absolute_url }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>.</p></div>
+		<div class="column">Follow</div>
+		<div class="column"><a href="{{ venue.website }}">Visit Their Website</a></div>
+		<div class="column"> <p>{{venue.address}}</p></div>
+		<div class="column">Genre: {{ venue.genre }}</div>
+	</div>
+	
+	</main>
+	
+	<div class"pic">
+		<div class="left-element">
+			<img src="{{venue.picture}}"
+			alt="pic" width="1150" height="900"/>
+		</div>
+		
+		<div class="mid-element">
+			<div class="mid-top">
+				<h2>About</h2>
+				<p>{{ venue.info }}</p>
+			<div class="mid-bottom">
+				<h2>Upcoming Events</h2>
+				<p>
+				<ul>
+					{% for event in events %}
+						<li>{{ event }}</li>
+					{% empty %}
+						<li>{{ venue.name}} has no gigs scheduled.</li>
+					{% endfor %}
+				</ul>
+				</p>
+			</div>
+			</div>
+		</div>
+		
+		<div class="right-element">
+			<div class="fb-comments" data-href="{{ request.build_absolute_url }}" data-numposts="5"></div>
+		</div>
+	</div>
+  </body>
+	
+	
 {% endblock content %}

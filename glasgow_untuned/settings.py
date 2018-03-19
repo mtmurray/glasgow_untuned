@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 	
 	#3rd party
 	'bootstrap3',
+	'registration',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +97,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-		'OPTIONS': {'min_length': 8 }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -125,7 +125,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+#users will be automatically logged in
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL='glasuntu:index'
+
 #bootstrap settings
 BOOTSTRAP3 = {
 	'include_jquery': True,
 	}
+
+LOGIN_URL = '/accounts/login/'

@@ -23,4 +23,5 @@ lets you distinguish between the urls of your apps
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'', include('glasuntu.urls', namespace='glasuntu')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 ]

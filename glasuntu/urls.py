@@ -22,4 +22,13 @@ urlpatterns = [
 	
 	#Register venue page url
 	url(r'^new_venue/$', views.new_venue, name = 'new_venue'),
+	
+	#User registration url
+	url(r'^register/$', views.register, name='register'),
+	
+	#User login url
+    url(r'^login/$', views.user_login, name='login'),
+	
+	#Logout page url
+    url(r'^logout/$', views.user_logout, name='logout'),
 ]

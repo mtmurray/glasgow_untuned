@@ -10,6 +10,8 @@
 	<meta http-equiv="X-UA-Compatible" content = "IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel = "stylesheet" href = "/static/glasuntu/custom.css">
+	<link rel = "stylesheet" href = "/static/glasuntu/ven.css">
+	<script src="{% static 'glasuntu/fb.js' %}"></script>
 	
 	{% bootstrap_css %}
 	{% bootstrap_javascript %}
@@ -45,7 +47,12 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href = "{% url 'glasuntu:new_artist' %}" id = "navRight" >Create an Artist Page</a></li>
 			<li><a href = "{% url 'glasuntu:new_venue' %}" id = "navRight">Register Your Venue</a></li>
-			<li><a href = "" id = "navRight">Login</a></li>
+			{% if user.is_authenticated %}
+				<li><a href="{% url 'auth_logout' %}" id = "navRight">Logout</a></li>
+			{% else %}
+				<li><a href="{% url 'registration_register' %}" id = "navRight">Sign Up</a></li>
+				<li><a href="{% url 'auth_login' %}" id = "navRight">Sign In</a></li>
+			{% endif %}
 		</ul>
 	</nav>
 	
