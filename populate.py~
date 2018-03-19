@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 
 import django
 django.setup()
-from glasuntu.models import VenuePage, Gig
+from glasuntu.models import VenuePage, Event
 
 def populate():
     a=VenuePage(id=1,
@@ -26,10 +26,10 @@ def populate():
     a.save()
     b.save()
 
-    c=Gig(name="The Killers", date="20/05/18", venue=a)
-    d=Gig(name="Kasabian", date="27/05/18", venue=a)
-    e=Gig(name="Made up band", date="23/05/18", venue=b)
-    f=Gig(name="Made up band", date="30/05/18", venue=b)
+    c=Event(name="The Killers", date="20/05/18", venue=a)
+    d=Event(name="Kasabian", date="27/05/18", venue=a)
+    e=Event(name="Made up band", date="23/05/18", venue=b)
+    f=Event(name="Made up band", date="30/05/18", venue=b)
     c.save()
     
     d.save()

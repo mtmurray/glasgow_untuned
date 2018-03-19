@@ -23,13 +23,13 @@
 {% block content %}
 <body>
 	<div class = "col-md-4" id = "upcoming">
-		<h2>Upcoming Gigs</h2>
+		<h2>Upcoming Events</h2>
 			<nav id = "EventsNav">
 				<ul>
-					{% for gig in gigs %}
-						<li>{{ gig }}</li>
+					{% for event in events %}
+						<li>{{ event }}</li>
 					{% empty %}
-						<li>No gigs are scheduled yet.</li>
+						<li>No events are scheduled yet.</li>
 					{% endfor %}	
 				</ul>
 			</nav>

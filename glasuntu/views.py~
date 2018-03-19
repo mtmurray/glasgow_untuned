@@ -2,7 +2,7 @@ from django.shortcuts import render #render function is responsible for renderin
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from .models import VenuePage
-from .models import Gig
+from .models import Event
 from .models import Genre
 from .models import ArtistPage
 from .forms import ArtistPageForm, VenuePageForm, UserForm, UserProfileForm
@@ -11,11 +11,11 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
 	"""Glasgow Untuned home page"""
-	gigs = Gig.objects.order_by('date')
+	events = Event.objects.order_by('date')
 	genres = Genre.objects.order_by('name')
 	
 	context_dict = {
-		"gigs":gigs,
+		"events":events,
 		"genres":genres,
 	}
 	
@@ -51,10 +51,10 @@ def search(request):
 def venue(request, venue_id):
 	venue = VenuePage.objects.get(id=venue_id)
 	venueName = venue.name
-	gigs = Gig.objects.filter(venue=venue)
+	events = Event.objects.filter(venue=venue)
 	context_dict = {
 		"venue":venueName,
-		"gigs":gigs,
+		"events":events,
 	}
 	
 	return render(request, 'glasuntu/venue.html', context_dict)

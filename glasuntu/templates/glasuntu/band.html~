@@ -22,7 +22,7 @@
 		<button type="button">Website</button>
 		</br>
 		</br>
-		<img src="{{venue.picture}}" alt="Artist Image" width="1150" height="900"/>
+		<img src="{{venue.picture}}" alt="pic" width="1150" height="900"/>
 	</div>
 
 	<div class = "col-md-4" id = "container">

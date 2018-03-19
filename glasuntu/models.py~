@@ -16,10 +16,6 @@ class VenuePage(models.Model):
 class ArtistPage(models.Model):
 	id = models.IntegerField(primary_key = True)
 	name = models.CharField(max_length=200)
-	info = models.CharField(max_length=1000, default = "")
-	picture = models.CharField(max_length=400, default = "")
-	website = models.CharField(max_length=200, default = "")
-	genre = models.CharField(max_length=200, default = "")
 	def __str__(self):
 		return self.name
 		
@@ -28,8 +24,8 @@ class Genre(models.Model):
 	def __str__(self):
 		return self.name
 		
-class Gig(models.Model):
-	name = models.CharField(max_length=200)
+class Event(models.Model):
+	name = models.CharField(max_length=150)
 	date = models.DateTimeField(auto_now_add=True)
 	venue = models.ForeignKey(VenuePage, default = "")
 	def __str__(self):

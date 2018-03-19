@@ -35,11 +35,11 @@
 				<h2>About</h2>
 				<p>{{ venue.info }}</p>
 			<div class="mid-bottom">
-				<h2>Upcoming Gigs</h2>
+				<h2>Upcoming Events</h2>
 				<p>
 				<ul>
-					{% for gig in gigs %}
-						<li>{{ gig }}</li>
+					{% for event in events %}
+						<li>{{ event }}</li>
 					{% empty %}
 						<li>{{ venue.name}} has no gigs scheduled.</li>
 					{% endfor %}
