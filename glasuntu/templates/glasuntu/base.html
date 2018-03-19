@@ -9,6 +9,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content = "IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel = "stylesheet" href = "/static/glasuntu/custom.css">
 	
 	{% bootstrap_css %}
 	{% bootstrap_javascript %}
@@ -17,7 +18,7 @@
 	
 	<body>
 	<nav class = "navbar navbar-default navbar-static-top">
-		<button class = "navbar-toggle collapsed"
+		<button class = "navbar-toggle collapsed">
 			data-toggle="collapse" data-target="#navbar"
 			aria-controls="navbar" aria-expanded="false"
 			aria-label="toggle nav">
@@ -26,9 +27,9 @@
 		
 		<a href="{% url 'glasuntu:index' %}" class = "navbar-brand">Glasgow Untuned</a>
 		
-		<form method = "GET" action = "{% url 'glasuntu:search' %}" class = "navbar-form navbar-left">
+		<form method = "GET" action = "{% url 'glasuntu:search' %}" class = "navbar-form navbar-left" id = "navSearch">
 		
-			<label for="search_options">Search by:</label>
+			<label for="search_options" id = "label">Search by:</label>
 		
 			<!--Content of the selection menu is retrieved in "search" view-->
 			<select id = "search_options" name = "s" value = "{{ request.GET.s }}"/>
@@ -42,10 +43,13 @@
 		</form>
 		
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href = "{% url 'glasuntu:new_artist' %}">Create an Artist Page</a></li>
-			<li><a href = "{% url 'glasuntu:new_venue' %}">Register Your Venue</a></li>
+			<li><a href = "{% url 'glasuntu:new_artist' %}" id = "navRight" >Create an Artist Page</a></li>
+			<li><a href = "{% url 'glasuntu:new_venue' %}" id = "navRight">Register Your Venue</a></li>
+			<li><a href = "" id = "navRight">Login</a></li>
 		</ul>
 	</nav>
+	
+	{% block header %}{% endblock header %}
 	
 	<!--content of the block is determined in the inheriting template-->
 	{% block content %}{% endblock content %}
@@ -55,63 +59,10 @@
 	<footer>
 		<div id = "foot">
 	
-			<p id = "social">Facebook and Twitter links<p>
-			<p id = "contact">Contact info<p>
-			<p id = "faq">FAQ</p>
+			<!--<p id = "social">Facebook and Twitter links<p>-->
+			<!--<p id = "contact">Contact us: 2088324M@student.gla.ac.uk<p>-->
+			<!--<p id = "faq">FAQ</p>-->
 	
 		</div>
 	</footer>
-
-<!--
-
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{% static 'glasuntu/base_style.css' %}">
-</head>
-
-<body>
-	<header>
-		<h1><a href="{% url 'glasuntu:index' %}">Glasgow Untuned</a></h1>
-		
-		<form method = "GET" action = "{% url 'glasuntu:search' %}">
-		
-			<label for="search_options">Search by:</label>
-		
-			<!--Content of the selection menu is retrieved in "search" view-->
-			
-			<!--
-			<select id = "search_options" name = "s" value = "{{ request.GET.s }}"/>
-				<option value = "a">Artist</option>
-				<option value = "v">Venue</option>
-			</select>
-			
-			<!-- "q" = the user's query -->
-			
-			<!--
-			<input id = "search" name = "q" type = "text" placeholder = "Search..." value = "{{ request.GET.q }}"/>
-			<input id = "searchButt" type = "submit" value = "Submit"/>
-		</form>
-		
-		<a href = "{% url 'glasuntu:new_artist' %}">Create an Artist Page</a>
-		<a href = "{% url 'glasuntu:new_venue' %}">Register Your Venue</a>
-		
-		{% block head %}{% endblock head %}
-	</header>
-		
-	
-	
-		
-	<!--
-	<footer>
-		<div id = "foot">
-	
-			<p id = "social">Facebook and Twitter links<p>
-			<p id = "contact">Contact info<p>
-			<p id = "faq">FAQ</p>
-	
-		</div>
-	</footer>
-	
-</body>
-		-->
 </html>

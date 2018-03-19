@@ -6,17 +6,23 @@
 	<meta name = "page description" content = "This is the homepage of Glasgow Untuned, a site for discovering music venues and upcoming performances">
 </head>
 
-{% block head %}
+{% block header %}
+<!--
 <form method = "POST" action = "">
 	<input id = "uEnt" type = "text" placeholder = "Username">
 	<input id = "pEnt" type = "text" placeholder = "Password">
 	<input id = "loginButt" type = "submit" value = "Login">
 </form>
-{% endblock head %}
+-->
+
+<div class = "jumbotron">
+	<h1>Welcome to Glasgow Untuned</h1>
+</div>
+{% endblock header %}
 
 {% block content %}
 <body>
-	<div class = "navBar" id = "upcoming">
+	<div class = "col-md-4" id = "upcoming">
 		<h2>Upcoming Events</h2>
 			<nav id = "EventsNav">
 				<ul>
@@ -29,7 +35,7 @@
 			</nav>
 	</div>
 
-	<div class = "navBar" id = "recent">
+	<div class = "col-md-4" id = "recent">
 		<h2>Recently Added</h2>
 			<nav id = "RecentNav">
 				<ul>
@@ -42,7 +48,7 @@
 			</nav>
 	</div>
 
-	<div class = "navBar" id = "genres">
+	<div class = "col-md-4" id = "genres">
 		<h2>Venue Genres</h2>
 			<nav id = "GenreNav">
 				<ul>

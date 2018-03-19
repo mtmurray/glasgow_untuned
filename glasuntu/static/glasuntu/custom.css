@@ -1,0 +1,31 @@
+.navbar-default {
+	background-color: SteelBlue !important;
+}
+
+.navbar-brand {
+	color: white !important;
+}
+
+#search_options {
+	background-color: #C0C0C0 !important;
+	color: black !important;
+}
+
+#label {
+	color: white;
+}
+
+#searchButt {
+	background-color: #C0C0C0;
+	color: black;
+}
+
+
+#navRight {
+	color: white;
+}
+
+#navSearch{
+	position: fixed;
+	left: 25%;
+}
