@@ -28,7 +28,7 @@
 				<ul>
 					{% for event in events %}
 						<li>{{ event }}</li>
-					[% empty %}
+					{% empty %}
 						<li>No events are scheduled yet.</li>
 					{% endfor %}	
 				</ul>
