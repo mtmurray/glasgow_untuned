@@ -7,6 +7,11 @@
 </head>
 
 {% block header %}
+<head>
+	<title>Glasgow Untuned Homepage</title>
+	<meta name = "authors" content = "Matthew Murray, Jamie Howitt, Jamie Dickson">
+	<meta name = "page description" content = "This is the homepage of Glasgow Untuned, a site for discovering music venues and upcoming performances">
+</head>
 <!--
 <form method = "POST" action = "">
 	<input id = "uEnt" type = "text" placeholder = "Username">
@@ -27,10 +32,10 @@
 			<nav id = "EventsNav">
 				<ul>
 					{% for event in events %}
-						<li>{{ event }}</li>
+						<li>{{ event.name.name }}</li>
 					{% empty %}
 						<li>No events are scheduled yet.</li>
-					{% endfor %}	
+					{% endfor %}
 				</ul>
 			</nav>
 	</div>
@@ -63,4 +68,3 @@
 </body>
 
 {% endblock content %}
-

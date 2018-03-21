@@ -11,13 +11,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel = "stylesheet" href = "/static/glasuntu/custom.css">
 	<link rel = "stylesheet" href = "/static/glasuntu/ven.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script src="{% static 'glasuntu/jquery-3.3.1.js' %}"></script>
+	<script src="{% static 'glasuntu/jquery.min.js' %}"></script>
 	<script src="{% static 'glasuntu/fb.js' %}"></script>
-	
+	<script src="{% static 'glasuntu/glasajax.js' %}"></script>
 	{% bootstrap_css %}
 	{% bootstrap_javascript %}
-	
+
 	</head>
-	
+
 	<body>
 	<nav class = "navbar navbar-default navbar-static-top">
 		<button class = "navbar-toggle collapsed">
@@ -26,24 +29,24 @@
 			aria-label="toggle nav">
 			<span class = "navbar-toggler-icon"></span>
 		</button>
-		
+
 		<a href="{% url 'glasuntu:index' %}" class = "navbar-brand">Glasgow Untuned</a>
-		
+
 		<form method = "GET" action = "{% url 'glasuntu:search' %}" class = "navbar-form navbar-left" id = "navSearch">
-		
+
 			<label for="search_options" id = "label">Search by:</label>
-		
+
 			<!--Content of the selection menu is retrieved in "search" view-->
 			<select id = "search_options" name = "s" value = "{{ request.GET.s }}"/>
 				<option value = "a">Artist</option>
 				<option value = "v">Venue</option>
 			</select>
-			
+
 			<!-- "q" = the user's query -->
 			<input id = "search" name = "q" type = "text" placeholder = "Search..." value = "{{ request.GET.q }}"/>
 			<input id = "searchButt" type = "submit" value = "Submit"/>
 		</form>
-		
+
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href = "{% url 'glasuntu:new_artist' %}" id = "navRight" >Create an Artist Page</a></li>
 			<li><a href = "{% url 'glasuntu:new_venue' %}" id = "navRight">Register Your Venue</a></li>
@@ -55,21 +58,21 @@
 			{% endif %}
 		</ul>
 	</nav>
-	
+
 	{% block header %}{% endblock header %}
-	
+
 	<!--content of the block is determined in the inheriting template-->
 	{% block content %}{% endblock content %}
-	
+
 	</body>
-	
+
 	<footer>
 		<div id = "foot">
-	
+
 			<!--<p id = "social">Facebook and Twitter links<p>-->
 			<!--<p id = "contact">Contact us: 2088324M@student.gla.ac.uk<p>-->
 			<!--<p id = "faq">FAQ</p>-->
-	
+
 		</div>
 	</footer>
 </html>

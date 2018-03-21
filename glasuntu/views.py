@@ -8,7 +8,7 @@ from .models import ArtistPage
 from .forms import ArtistPageForm, VenuePageForm, UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponse
 def index(request):
 	"""Glasgow Untuned home page"""
 	events = Event.objects.order_by('date')
@@ -65,10 +65,11 @@ def artist(request, artist_id):
 	artist = ArtistPage.objects.get(id=artist_id)
 	artistName = artist.name
 	id = artist.id
-	
+	events = Event.objects.filter(name=artist)
 	context_dict = {
 		"artist":artist,
 		"id":id,
+                "events":events,
 	}
 	
 	return render(request, 'glasuntu/band.html', context_dict)
@@ -96,7 +97,7 @@ def new_venue(request):
 		if form.is_valid():
 			new_venue = form.save(commit=False)
 			new_venue.owner = request.user
-			new_artist.save()
+			new_venue.save()
 			
 	context_dict = {'form':form}
 	return render(request, 'glasuntu/new_venue.html', context_dict)
@@ -187,3 +188,17 @@ def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('glasuntu:index'))
 
+
+@login_required
+def like_venue(request):
+        ven_id=None
+        if request.method == 'GET':
+                ven_id = request.GET['venue_id']
+        likes=0
+        if ven_id:
+                ven = VenuePage.objects.get(id=int(ven_id))
+                if ven:
+                        likes = ven.likes + 1
+                        ven.likes = likes
+                        ven.save()
+        return HttpResponse(likes)

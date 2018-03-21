@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 
 import django
 django.setup()
-from glasuntu.models import VenuePage, Event
+from glasuntu.models import VenuePage, Event, ArtistPage
 
 def populate():
     a=VenuePage(id=1,
@@ -26,17 +26,32 @@ def populate():
     a.save()
     b.save()
 
-    c=Event(name="The Killers", date="20/05/18", venue=a)
-    d=Event(name="Kasabian", date="27/05/18", venue=a)
-    e=Event(name="Made up band", date="23/05/18", venue=b)
-    f=Event(name="Made up band", date="30/05/18", venue=b)
+
+    trains=ArtistPage(id=1,
+    name="The Trainspotters",
+    picture="http://ksassets.timeincuk.net/wp/uploads/sites/55/2017/02/trainspotting_best_scene_630.jpg",
+    website="sdfgdg",
+    info="""The Trainspotters are a Scottish rock band from East Kilbride.The band formed in 2008 and have been converting young fans to rock music ever since.
+                    Members:
+                    - Mark Renton (vocals)
+                    - Francis Begbie (lead guitar)
+                    - Simon Williamson (bass guitar)
+                    - Daniel Murphy (drums)""",
+    genre="Indie, Rock")
+    trains.save()
+
+
+    c=Event(name=trains, date="2018-05-18", venue=a)
+    d=Event(name=trains, date="2018-05-25", venue=a)
+    e=Event(name=trains, date="2018-06-07", venue=b)
+    f=Event(name=trains, date="2018-06-08", venue=b)
     c.save()
     
     d.save()
     e.save()
     f.save()
 
-
+    
 
     
 if __name__=='__main__':

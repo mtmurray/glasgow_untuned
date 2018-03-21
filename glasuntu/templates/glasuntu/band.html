@@ -12,37 +12,40 @@
 <body>
 	<h2> {{ artist }} </h2>
 	</br>
-	
+
 	<a href="{% url 'glasuntu:edit_artist' id %}">edit</a>
 
-	<div class = "col-md-4" id = "container">
+	<div class = pic id = "container">
 		<button type="button">Follow</button>
 		<button type="button">Website</button>
-		</br>
-		</br>
-		<img src="{{artist.picture}}" alt="pic" width="1150" height="900"/>
+
+
 	</div>
 
-	<div class = "col-md-4" id = "container">
+	<div class="pic">
+		<div class="left-element">
+			<img src="{{artist.picture}}" alt="pic" width="1150" height="900"/>
+		</div>
+		<div class="mid-element">
+	<div class = "mid-top">
 		<h2>About</h2>
-		</br>
 		{{ artist.info }}
-		
+
 	</div>
 
-	<div class = "col-md-4" id = "upcomingGigs">
+	<div class = "mid-bottom">
 		<h2>Upcoming Gigs</h2>
 			<nav id = "GigsNav">
 				<ul>
 					{% for event in events %}
-						<li>{{ event }}</li>
+						<li>{{ event.venue }}</li>
 					{% empty %}
 						<li>{{ artist.name}} has no gigs scheduled.</li>
 					{% endfor %}
 				</ul>
 			</nav>
 	</div>
-	
+
 </body>
 
 {% endblock content %}
