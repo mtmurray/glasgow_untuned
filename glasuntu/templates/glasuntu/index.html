@@ -32,7 +32,7 @@
 			<nav id = "EventsNav">
 				<ul>
 					{% for event in events %}
-						<li>{{ event.name.name }}</li>
+						<li><a href="{% url 'glasuntu:artist' event.name.id %}">{{ event.name.name }}</a> at <a href="{% url 'glasuntu:venue' event.venue.id %}">{{event.venue}}</a></li>
 					{% empty %}
 						<li>No events are scheduled yet.</li>
 					{% endfor %}
@@ -41,11 +41,11 @@
 	</div>
 
 	<div class = "col-md-4" id = "recent">
-		<h2>Recently Added</h2>
+		<h2>Most Liked Venues</h2>
 			<nav id = "RecentNav">
 				<ul>
-					{% for recent in recents %}
-						<li>{{ recent }}</li>
+					{% for venue in venues %}
+						<li><a href="{% url 'glasuntu:venue' venue.id %}">{{ venue.name }}</a></li>
 					{% empty %}
 						<li>There are no recently visited pages.</li>
 					{% endfor %}

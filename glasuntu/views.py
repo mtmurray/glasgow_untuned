@@ -13,10 +13,11 @@ def index(request):
 	"""Glasgow Untuned home page"""
 	events = Event.objects.order_by('date')
 	genres = Genre.objects.order_by('name')
-	
+	venues = VenuePage.objects.order_by('-likes')[:5]
 	context_dict = {
 		"events":events,
 		"genres":genres,
+                "venues":venues
 	}
 	
 	return render (request, 'glasuntu/index.html', context_dict)
