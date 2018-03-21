@@ -1,7 +1,5 @@
 {% extends "glasuntu/base.html" %}
 
-<!--Will be if stuff for whether user is signed in (see the All-Knowing Matthew)-->
-
 <head>
 	<title>{{ artist }}</title>
 </head>
@@ -17,33 +15,36 @@
 	<h2> {{ artist }} </h2>
 	</br>
 
-	<div class = "col-md-4" id = "container">
-		<button type="button">Follow</button>
-		<button type="button">Website</button>
-		</br>
-		</br>
-		<img src="{{venue.picture}}" alt="Artist Image" width="1150" height="900"/>
+	<div class = "row">
+		<div class="column"><a href="{{ artist.website }}">Website</a></div>
+		<div class="column">Genre: {{ artist.genre }}</div>
 	</div>
-
-	<div class = "col-md-4" id = "container">
-		<h2>About</h2>
-		</br>
-		{{ artist.info }}
-	</div>
-
-	<div class = "col-md-4" id = "upcomingGigs">
+	
+	<div class = "pic">
+		<div class="left-element">
+			<img src="{{artist.picture}}"
+			alt="pic" width="1150" height="900"/>
+		</div>
+		
+		<div class="mid-element">
+			<h2>About</h2>
+			<p>{{ artist.info }}</p>
+		</div>
+		
+		<div class="right-element">
 		<h2>Upcoming Gigs</h2>
-			<nav id = "GigsNav">
+				<p>
 				<ul>
-					{% for gig in gigs %}
-						{% if gig.artist == artist.name %}
-							<li>{{ gig }}</li>
+					{% for event in events %}
+						{% if event.artist == artist.name %}
+							<li>{{ event.venue }} on {{ event.date }}</li>
 						{% endif %}
 					{% empty %}
-						<li>This band has no gigs scheduled.</li>
+						<li>{{ artist }} has no gigs scheduled.</li>
 					{% endfor %}
 				</ul>
-			</nav>
+				</p>
+		</div>
 	</div>
 	
 </body>
