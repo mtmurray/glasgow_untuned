@@ -31,4 +31,10 @@ urlpatterns = [
 	
 	#Logout page url
     url(r'^logout/$', views.user_logout, name='logout'),
+	
+	#Edit artist description url
+	url(r'^edit_artist/(?P<artist_id>\d+)/$', views.edit_artist, name='edit_artist'),
+	
+	#Edit venue description url
+	url(r'^edit_venue/(?P<venue_id>\d+)/$', views.edit_venue, name='edit_venue'),
 ]

@@ -1,0 +1,12 @@
+{% extends "glasuntu/base.html" %}
+
+{% block content %}
+
+<p>Edit Venue Information</p>
+<form action = "{url 'glasuntu:edit_venue' id %}" method='post'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name="submit">Save</button>
+</form>
+
+{% endblock content %}

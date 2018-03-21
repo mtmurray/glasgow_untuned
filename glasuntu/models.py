@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class VenuePage(models.Model):
 	id = models.IntegerField(primary_key = True)
 	name = models.CharField(max_length=200, default = "")
+	owner = models.ForeignKey(User, default = 1)
 	address = models.CharField(max_length=200, default = "")
 	picture = models.CharField(max_length=400, default = "")
 	website = models.CharField(max_length=200, default = "")
@@ -15,7 +16,12 @@ class VenuePage(models.Model):
 
 class ArtistPage(models.Model):
 	id = models.IntegerField(primary_key = True)
-	name = models.CharField(max_length=200)
+	name = models.CharField(unique=True, max_length=200)
+	owner = models.ForeignKey(User, default = 1)
+	picture = models.CharField(max_length=400, default = "")
+	website = models.CharField(max_length=200, default = "")
+	info = models.CharField(max_length=1000, default = "")
+	genre = models.CharField(max_length=200, default = "")
 	def __str__(self):
 		return self.name
 		

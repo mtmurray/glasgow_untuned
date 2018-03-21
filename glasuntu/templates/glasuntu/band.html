@@ -1,14 +1,10 @@
 {% extends "glasuntu/base.html" %}
 
-<!--Will be if stuff for whether user is signed in (see the All-Knowing Matthew)-->
-
 <head>
 	<title>{{ artist }}</title>
 </head>
 
 {% block head %}
-	<input id = "uEnt" type = "text" placeholder = "Username">
-	<input id = "pEnt" type "text" placeholder = "Password">
 {% endblock head %}
 
 {% block content %}
@@ -16,23 +12,36 @@
 <body>
 	<h2> {{ artist }} </h2>
 	</br>
-	<button type="button">Follow</button>
-	<button type="button">Website</button>
+	
+	<a href="{% url 'glasuntu:edit_artist' id %}">edit</a>
 
-	<div id = "upcomingGigs">
+	<div class = "col-md-4" id = "container">
+		<button type="button">Follow</button>
+		<button type="button">Website</button>
+		</br>
+		</br>
+		<img src="{{artist.picture}}" alt="pic" width="1150" height="900"/>
+	</div>
+
+	<div class = "col-md-4" id = "container">
+		<h2>About</h2>
+		</br>
+		{{ artist.info }}
+		
+	</div>
+
+	<div class = "col-md-4" id = "upcomingGigs">
 		<h2>Upcoming Gigs</h2>
 			<nav id = "GigsNav">
 				<ul>
-					{% for gig in gigs %}
-						<!-- (if gig band == this band -->
-						<li>{{ gig }}</li>
+					{% for event in events %}
+						<li>{{ event }}</li>
 					{% empty %}
-						<li>This band has no gigs scheduled.</li>
+						<li>{{ artist.name}} has no gigs scheduled.</li>
 					{% endfor %}
 				</ul>
 			</nav>
 	</div>
-	
 	
 </body>
 

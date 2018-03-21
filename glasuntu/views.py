@@ -52,9 +52,11 @@ def venue(request, venue_id):
 	venue = VenuePage.objects.get(id=venue_id)
 	venueName = venue.name
 	events = Event.objects.filter(venue=venue)
+	id = venue.id
 	context_dict = {
-		"venue":venueName,
+		"venue":venue,
 		"events":events,
+		"id":id,
 	}
 	
 	return render(request, 'glasuntu/venue.html', context_dict)
@@ -62,9 +64,11 @@ def venue(request, venue_id):
 def artist(request, artist_id):
 	artist = ArtistPage.objects.get(id=artist_id)
 	artistName = artist.name
+	id = artist.id
 	
 	context_dict = {
-		"artist":artistName,
+		"artist":artist,
+		"id":id,
 	}
 	
 	return render(request, 'glasuntu/band.html', context_dict)
@@ -76,7 +80,9 @@ def new_artist(request):
 	else:
 		form = ArtistPageForm(data = request.POST)
 		if form.is_valid():
-			form.save()
+			new_artist = form.save(commit=False)
+			new_artist.owner = request.user
+			new_artist.save()
 			
 	context_dict = {'form':form}
 	return render(request, 'glasuntu/new_artist.html', context_dict)
@@ -88,10 +94,40 @@ def new_venue(request):
 	else:
 		form = VenuePageForm(data = request.POST)
 		if form.is_valid():
-			form.save()
+			new_venue = form.save(commit=False)
+			new_venue.owner = request.user
+			new_artist.save()
 			
 	context_dict = {'form':form}
 	return render(request, 'glasuntu/new_venue.html', context_dict)
+	
+def edit_artist(request, artist_id):
+	artist = ArtistPage.objects.get(id=artist_id)
+	info = artist.info
+	
+	if request.method != 'POST':
+		form = ArtistPageForm(instance=artist)
+	else:
+		form = ArtistPageForm(instance=artist, data=request.POST)
+		if form.is_valid():
+			form.save()
+			
+	context_dict = {'artist':artist, 'info':info, 'form':form, 'id':artist_id}
+	return render(request, 'glasuntu/edit_artist.html', context_dict)
+
+def edit_venue(request, venue_id):
+	venue = VenuePage.objects.get(id=venue_id)
+	info = venue.info
+	
+	if request.method != 'POST':
+		form = VenuePageForm(instance=venue)
+	else:
+		form = VenuePageForm(instance=venue, data=request.POST)
+		if form.is_valid():
+			form.save()
+			
+	context_dict = {'venue':venue, 'info':info, 'form':form, 'id':venue_id}
+	return render(request, 'glasuntu/edit_venue.html', context_dict)
 	
 def register(request):
 	registered = False

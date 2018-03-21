@@ -7,16 +7,25 @@ from django.contrib.auth.models import User
 class ArtistPageForm(forms.ModelForm):
 	class Meta:
 		model = ArtistPage
-		fields = ['name']
-		labels = {'name': 'Name:'}
+		fields = ['name', 'website', 'info', 'genre']
+		labels = {'name': 'Name:',
+					'website': 'Website:',
+					'info':'Description:',
+					'genre':'Genre(s):'}
+		widgets = {'info': forms.Textarea(attrs={'cols': 50})}
 		
 class VenuePageForm(forms.ModelForm):
 	class Meta:
 		model = VenuePage
-		fields = ['name', 'address']
+		fields = ['name', 'address', 'website', 'info', 'genre']
 		labels = {'name': 'Name:',
 				'address': 'Address:',
+				'website': 'Website:',
+				'info':'Description:',
+				'genre':'Genre(s):'
 				}
+		widgets = {'info': forms.Textarea(attrs={'cols': 50})}
+		
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget = forms.PasswordInput())
 	
