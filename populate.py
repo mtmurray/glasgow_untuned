@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 
 import django
 django.setup()
-from glasuntu.models import VenuePage, Gig
+from glasuntu.models import VenuePage, Event, ArtistPage
 
 def populate():
     a=VenuePage(id=1,
@@ -26,15 +26,30 @@ def populate():
     a.save()
     b.save()
 
-    c=Gig(name="The Killers", date="20/05/18", venue=a)
-    d=Gig(name="Kasabian", date="27/05/18", venue=a)
-    e=Gig(name="Made up band", date="23/05/18", venue=b)
-    f=Gig(name="Made up band", date="30/05/18", venue=b)
-    c.save()
+    c=ArtistPage(id=1,
+    name="The Killers",
+    picture="https://metrouk2.files.wordpress.com/2017/01/the-killers-2-e1485012869982.jpg?quality=80&strip=all&strip=all",
+    website="http://www.thekillersmusic.com/",
+    info="The Killers are an American rock band.",
+    genre="Rock")
     
+    d=ArtistPage(id=2,
+    name="Kasabian",
+    picture="https://www.inmusicfestival.com/sites/default/files/styles/large/public/inm-web-800x600-kasabian.jpg?itok=DWnM_kEl",
+    website="http://www.kasabian.co.uk/",
+    info="Kasabian are a band.",
+    genre="Rock")
+    c.save()
     d.save()
+
+    e=Event(name="The Killers", date="20/05/18", venue=a)
+    f=Event(name="Kasabian", date="27/05/18", venue=a)
+    g=Event(name="Made up band", date="23/05/18", venue=b)
+    h=Event(name="Made up band", date="30/05/18", venue=b)
     e.save()
     f.save()
+    g.save()
+    h.save()
 
 
 
