@@ -37,4 +37,7 @@ urlpatterns = [
 	
 	#Edit venue description url
 	url(r'^edit_venue/(?P<venue_id>\d+)/$', views.edit_venue, name='edit_venue'),
+
+        #likes
+        url(r'^like_venue/$', views.like_venue, name='like_venue'),
 ]

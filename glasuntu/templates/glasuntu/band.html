@@ -12,45 +12,44 @@
 <body>
 	<h2> {{ artist }} </h2>
 	</br>
-	
 	{% if user.is_authenticated %}
-		{% if uID == ownerID %}
-			<a href="{% url 'glasuntu:edit_artist' id %}">edit</a>
+			{% if uID == ownerID %}
+				<a href="{% url 'glasuntu:edit_artist' id %}">edit</a>
+			{% else %}
+				<p></p>
+			{% endif %}
 		{% else %}
 			<p></p>
-		{% endif %}
-	{% else %}
-		<p></p>
 	{% endif %}
 
-	<div class = "col-md-4" id = "container">
-		<button type="button">Follow</button>
-		<button type="button">Website</button>
-		</br>
-		</br>
-		<img src="{{artist.picture}}" alt="pic" width="1150" height="900"/>
+	<div class = "row">
+		<div class="column"><a href="{{ artist.website }}">Website</a></div>
+		<div class="column">Genre: {{ artist.genre }}</div>
 	</div>
 
-	<div class = "col-md-4" id = "container">
-		<h2>About</h2>
-		</br>
-		{{ artist.info }}
-		
-	</div>
+	<div class = "pic">
+		<div class="left-element">
+			<img src="{{artist.picture}}"
+			alt="pic" width="1000" height="700"/>
+		</div>
 
-	<div class = "col-md-4" id = "upcomingGigs">
+		<div class="mid-element">
+			<h2>About</h2>
+			<p>{{ artist.info }}</p>
+		</div>
+
+		<div class="right-element">
 		<h2>Upcoming Gigs</h2>
-			<nav id = "GigsNav">
+				<p>
 				<ul>
 					{% for event in events %}
-						<li>{{ event }}</li>
+							<li>{{ event.venue }} on {{ event.date }}</li>
 					{% empty %}
-						<li>{{ artist.name}} has no gigs scheduled.</li>
+						<li>{{ artist }} has no gigs scheduled.</li>
 					{% endfor %}
 				</ul>
-			</nav>
+				</p>
+		</div>
 	</div>
-	
-</body>
-
 {% endblock content %}
+</body>

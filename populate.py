@@ -4,9 +4,19 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 
 import django
 django.setup()
-from glasuntu.models import VenuePage, Event
-
+from glasuntu.models import VenuePage, Event, ArtistPage
+from glasuntu.models import User, UserProfile
 def populate():
+    user = User.objects.get_or_create(username="firstuser", password="test1234",
+                                        email="startuser@gmail.com")[0]
+    user.set_password(user.password)
+    
+
+    # Create a user profile
+    user_profile = UserProfile.objects.get_or_create(user=user)[0]
+    user_profile.save()
+
+    
     a=VenuePage(id=1,
     name="Barrowland Ballroom",
     address="244 Gallowgate, Glasgow G4 0TT",
@@ -26,17 +36,35 @@ def populate():
     a.save()
     b.save()
 
-    c=Event(name="The Killers", date="20/05/18", venue=a)
-    d=Event(name="Kasabian", date="27/05/18", venue=a)
-    e=Event(name="Made up band", date="23/05/18", venue=b)
-    f=Event(name="Made up band", date="30/05/18", venue=b)
+
+    kill=ArtistPage(id=1,
+    name="The Killers",
+    picture="https://metrouk2.files.wordpress.com/2017/01/the-killers-2-e1485012869982.jpg?quality=80&strip=all&strip=all",
+    website="http://www.thekillersmusic.com/",
+    info="The Killers are an American rock band formed in Las Vegas, Nevada, in 2001.  The Killers are seen as one of the biggest rock bands of the 21st century, and the most successful to ever emerge from Nevada, having sold an estimated 22 million records worldwide",
+    genre="Rock")
+    
+    kas=ArtistPage(id=2,
+    name="Kasabian",
+    picture="https://www.inmusicfestival.com/sites/default/files/styles/large/public/inm-web-800x600-kasabian.jpg?itok=DWnM_kEl",
+    website="http://www.kasabian.co.uk/",
+    info="Kasabian are an English rock band formed in Leicester in 1997.  The band's original members consisted of vocalist Tom Meighan, guitarist and vocalist Sergio Pizzorno, guitarist Chris Karloff, and bassist Chris Edwards. Their music has won them several awards and recognition in the media, including a Brit Award in 2010 for Best British Group.",
+    genre="Rock")
+    kill.save()
+    kas.save()
+
+
+    c=Event(name=kill, date="2018-05-18", venue=a)
+    d=Event(name=kas, date="2018-05-25", venue=a)
+    e=Event(name=kas, date="2018-06-07", venue=b)
+    f=Event(name=kill, date="2018-06-08", venue=b)
     c.save()
     
     d.save()
     e.save()
     f.save()
 
-
+    
 
     
 if __name__=='__main__':

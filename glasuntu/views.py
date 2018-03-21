@@ -8,15 +8,16 @@ from .models import ArtistPage
 from .forms import ArtistPageForm, VenuePageForm, UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponse
 def index(request):
 	"""Glasgow Untuned home page"""
 	events = Event.objects.order_by('date')
 	genres = Genre.objects.order_by('name')
-	
+	venues = VenuePage.objects.order_by('-likes')[:5]
 	context_dict = {
 		"events":events,
 		"genres":genres,
+                "venues":venues
 	}
 	
 	return render (request, 'glasuntu/index.html', context_dict)
@@ -53,13 +54,12 @@ def venue(request, venue_id):
 	venueName = venue.name
 	events = Event.objects.filter(venue=venue)
 	id = venue.id
-	
 	context_dict = {
 		"venue":venue,
 		"events":events,
 		"id":id,
-		"uID":request.user.id,
-		"ownerID":venue.owner.id,
+                "uID":request.user.id,
+                "ownerID":venue.owner.id,
 	}
 	
 	return render(request, 'glasuntu/venue.html', context_dict)
@@ -68,11 +68,12 @@ def artist(request, artist_id):
 	artist = ArtistPage.objects.get(id=artist_id)
 	artistName = artist.name
 	id = artist.id
-	
+	events = Event.objects.filter(name=artist)
 	context_dict = {
 		"artist":artist,
 		"id":id,
-		"uID":request.user.id,
+                "events":events,
+                "uID":request.user.id,
 		"ownerID":artist.owner.id,
 	}
 	
@@ -117,7 +118,7 @@ def edit_artist(request, artist_id):
 		if form.is_valid():
 			form.save()
 			
-	context_dict = {'artist':artist, 'info':info, 'form':form, 'id':artist_id, 'owner':artist.owner}
+	context_dict = {'artist':artist, 'info':info, 'form':form, 'id':artist_id}
 	return render(request, 'glasuntu/edit_artist.html', context_dict)
 
 def edit_venue(request, venue_id):
@@ -192,3 +193,17 @@ def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('glasuntu:index'))
 
+
+@login_required
+def like_venue(request):
+        ven_id=None
+        if request.method == 'GET':
+                ven_id = request.GET['venue_id']
+        likes=0
+        if ven_id:
+                ven = VenuePage.objects.get(id=int(ven_id))
+                if ven:
+                        likes = ven.likes + 1
+                        ven.likes = likes
+                        ven.save()
+        return HttpResponse(likes)
