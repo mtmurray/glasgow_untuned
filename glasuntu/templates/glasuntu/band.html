@@ -36,7 +36,7 @@
 				<p>
 				<ul>
 					{% for event in events %}
-						{% if event.artist == artist.name %}
+						{% if event.name == artist.name %}
 							<li>{{ event.venue }} on {{ event.date }}</li>
 						{% endif %}
 					{% empty %}
