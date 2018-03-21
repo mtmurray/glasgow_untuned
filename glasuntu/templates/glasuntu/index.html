@@ -27,7 +27,7 @@
 
 {% block content %}
 <body>
-	<div class = "col-md-4" id = "upcoming">
+	<div class = "col-md-6" id = "upcoming">
 		<h2>Upcoming Events</h2>
 			<nav id = "EventsNav">
 				<ul>
@@ -40,31 +40,20 @@
 			</nav>
 	</div>
 
-	<div class = "col-md-4" id = "recent">
+	<div class = "col-md-6" id = "recent">
 		<h2>Most Liked Venues</h2>
 			<nav id = "RecentNav">
 				<ul>
 					{% for venue in venues %}
 						<li><a href="{% url 'glasuntu:venue' venue.id %}">{{ venue.name }}</a></li>
 					{% empty %}
-						<li>There are no recently visited pages.</li>
+						<li>There are no liked venues.</li>
 					{% endfor %}
 				</ul>
 			</nav>
 	</div>
 
-	<div class = "col-md-4" id = "genres">
-		<h2>Venue Genres</h2>
-			<nav id = "GenreNav">
-				<ul>
-					{% for genre in genres %}
-						<li>{{ genre }}</li>
-					{% empty %}
-						<li>No genres have been defined.</li>
-					{% endfor %}
-				</ul>
-			</nav>
-	</div>
+
 </body>
 
 {% endblock content %}
