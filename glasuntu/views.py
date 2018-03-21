@@ -58,6 +58,8 @@ def venue(request, venue_id):
 		"venue":venue,
 		"events":events,
 		"id":id,
+                "uID":request.user.id,
+                "ownerID":venue.owner.id,
 	}
 	
 	return render(request, 'glasuntu/venue.html', context_dict)
@@ -71,6 +73,8 @@ def artist(request, artist_id):
 		"artist":artist,
 		"id":id,
                 "events":events,
+                "uID":request.user.id,
+		"ownerID":artist.owner.id,
 	}
 	
 	return render(request, 'glasuntu/band.html', context_dict)

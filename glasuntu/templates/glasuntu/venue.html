@@ -30,7 +30,15 @@
 		<div class="column"> <p>{{venue.address}}</p></div>
 		<div class="column">Genre: {{ venue.genre }}</div>
 	</div>
-
+	{% if user.is_authenticated %}
+			{% if uID == ownerID %}
+				<a href="{% url 'glasuntu:edit_venue' id %}">edit</a>
+			{% else %}
+				<p></p>
+			{% endif %}
+		{% else %}
+			<p></p>
+		{% endif %}
 	</main>
 
 	<div class="pic">

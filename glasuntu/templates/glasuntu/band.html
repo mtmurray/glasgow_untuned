@@ -12,16 +12,15 @@
 <body>
 	<h2> {{ artist }} </h2>
 	</br>
-
-	<a href="{% url 'glasuntu:edit_artist' id %}">edit</a>
-
-	<div class = pic id = "container">
-		<button type="button">Follow</button>
-		<button type="button">Website</button>
-
-
-	</div>
-
+	{% if user.is_authenticated %}
+			{% if uID == ownerID %}
+				<a href="{% url 'glasuntu:edit_artist' id %}">edit</a>
+			{% else %}
+				<p></p>
+			{% endif %}
+		{% else %}
+			<p></p>
+		{% endif %}
 	<div class="pic">
 		<div class="left-element">
 			<img src="{{artist.picture}}" alt="pic" width="1150" height="900"/>

@@ -33,7 +33,7 @@ class Genre(models.Model):
 		
 class Event(models.Model):
 	name = models.ForeignKey(ArtistPage, default = "")
-	date = models.DateTimeField(auto_now_add=True)
+	date = models.DateField(default = "")
 	venue = models.ForeignKey(VenuePage, default = "")
 	def __str__(self):
 		return self.name

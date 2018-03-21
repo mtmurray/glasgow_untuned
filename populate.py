@@ -5,8 +5,18 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 import django
 django.setup()
 from glasuntu.models import VenuePage, Event, ArtistPage
-
+from glasuntu.models import User, UserProfile
 def populate():
+    user = User.objects.get_or_create(username="firstuser", password="test1234",
+                                        email="startuser@gmail.com")[0]
+    user.set_password(user.password)
+    user.save()
+
+    # Create a user profile
+    user_profile = UserProfile.objects.get_or_create(user=user)[0]
+    user_profile.save()
+
+    return user, user_profile
     a=VenuePage(id=1,
     name="Barrowland Ballroom",
     address="244 Gallowgate, Glasgow G4 0TT",
