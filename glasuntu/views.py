@@ -53,10 +53,13 @@ def venue(request, venue_id):
 	venueName = venue.name
 	events = Event.objects.filter(venue=venue)
 	id = venue.id
+	
 	context_dict = {
 		"venue":venue,
 		"events":events,
 		"id":id,
+		"uID":request.user.id,
+		"ownerID":venue.owner.id,
 	}
 	
 	return render(request, 'glasuntu/venue.html', context_dict)
@@ -69,6 +72,8 @@ def artist(request, artist_id):
 	context_dict = {
 		"artist":artist,
 		"id":id,
+		"uID":request.user.id,
+		"ownerID":artist.owner.id,
 	}
 	
 	return render(request, 'glasuntu/band.html', context_dict)
@@ -96,7 +101,7 @@ def new_venue(request):
 		if form.is_valid():
 			new_venue = form.save(commit=False)
 			new_venue.owner = request.user
-			new_artist.save()
+			new_venue.save()
 			
 	context_dict = {'form':form}
 	return render(request, 'glasuntu/new_venue.html', context_dict)
@@ -112,7 +117,7 @@ def edit_artist(request, artist_id):
 		if form.is_valid():
 			form.save()
 			
-	context_dict = {'artist':artist, 'info':info, 'form':form, 'id':artist_id}
+	context_dict = {'artist':artist, 'info':info, 'form':form, 'id':artist_id, 'owner':artist.owner}
 	return render(request, 'glasuntu/edit_artist.html', context_dict)
 
 def edit_venue(request, venue_id):

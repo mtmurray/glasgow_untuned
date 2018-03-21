@@ -3,7 +3,7 @@
 {% block content %}
 
 <p>Edit Artist Information</p>
-<form action = "{url 'glasuntu:edit_artist' id %}" method='post'>
+<form action = "{% url 'glasuntu:edit_artist' id %}" method='post'>
 	{% csrf_token %}
 	{{ form.as_p }}
 	<button name="submit">Save</button>

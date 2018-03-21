@@ -14,16 +14,23 @@
 			<h2> {{ venue }} </h2>
 		</div>
 		
-		
-		
 	<div class="row">
-		<!--<div class = "column"><a href="{% url 'glasuntu:edit_venue' id %}">edit</a></div>-->
 		<div class="column">page like</div>
 		<div class="column"><p><div class="fb-like" data-href="{{ request.build_absolute_url }}" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div></p></div>
 		<div class="column"><a href="{{ venue.website }}">Visit Their Website</a></div>
 		<div class="column"> <p>{{venue.address}}</p></div>
 		<div class="column">Genre: {{ venue.genre }}</div>
 	</div>
+	
+	{% if user.is_authenticated %}
+		{% if uID == ownerID %}
+			<a href="{% url 'glasuntu:edit_venue' id %}">edit</a>
+		{% else %}
+			<p></p>
+		{% endif %}
+	{% else %}
+		<p></p>
+	{% endif %}
 	
 	</main>
 	
