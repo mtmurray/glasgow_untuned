@@ -20,31 +20,40 @@
 			{% endif %}
 		{% else %}
 			<p></p>
-		{% endif %}
-	<div class="pic">
+	{% endif %}
+	
+	<div class = "row">
+		<div class="column"><a href="{{ artist.website }}">Website</a></div>
+		<div class="column">Genre: {{ artist.genre }}</div>
+	</div>
+	
+	<div class = "pic">
 		<div class="left-element">
-			<img src="{{artist.picture}}" alt="pic" width="1150" height="900"/>
+			<img src="{{artist.picture}}"
+			alt="pic" width="1000" height="700"/>
 		</div>
+		
 		<div class="mid-element">
-
-		<h2>About</h2>
-		{{ artist.info }}
-</div>
-
-
-	<div class = "right-element">
+			<h2>About</h2>
+			<p>{{ artist.info }}</p>
+		</div>
+		
+		<div class="right-element">
 		<h2>Upcoming Gigs</h2>
-			<nav id = "GigsNav">
+				<p>
 				<ul>
 					{% for event in events %}
-						<li>{{event.date}} at {{ event.venue }}</li>
+						{% if event.name == artist.name %}
+							<li>{{ event.venue }} on {{ event.date }}</li>
+						{% endif %}
 					{% empty %}
-						<li>{{ artist.name}} has no gigs scheduled.</li>
+						<li>{{ artist }} has no gigs scheduled.</li>
 					{% endfor %}
 				</ul>
-			</nav>
+				</p>
+		</div>
 	</div>
-
+	
 </body>
 
 {% endblock content %}
